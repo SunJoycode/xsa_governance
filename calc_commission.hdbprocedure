@@ -1,0 +1,18 @@
+CREATE PROCEDURE CALC_COMMISSION()
+
+LANGUAGE SQLSCRIPT AS
+
+BEGIN
+
+SELECT 
+    b.hotel_id,
+    SUM(b.amount) AS revenue,
+    SUM(b.amount * h.commission_rate) AS commission
+
+FROM BOOKINGS b
+JOIN HOTELS h
+ON b.hotel_id = h.hotel_id
+
+GROUP BY b.hotel_id;
+
+END;
