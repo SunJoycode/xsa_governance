@@ -12,6 +12,8 @@ def build_semantic(name, explanation):
 
     path = os.path.join("outputs/semantic", file)
 
+    os.makedirs("outputs/semantic", exist_ok=True)
+
     with open(path, "w") as f:
         json.dump(semantic, f, indent=2)
 

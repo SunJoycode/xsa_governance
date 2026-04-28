@@ -6,7 +6,7 @@ def load_xsa(folder):
 
     for file in os.listdir(folder):
 
-        if file.endswith(".hdbprocedure"):
+        if file.endswith((".hdbprocedure", ".hdbtablefunction")):
 
             path = os.path.join(folder, file)
 

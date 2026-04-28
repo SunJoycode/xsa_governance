@@ -3,8 +3,9 @@ from app.config import COLLIBRA_URL, COLLIBRA_TOKEN
 
 def publish_collibra(asset):
 
-    if not COLLIBRA_URL:
-        return "Collibra URL not configured"
+    if not COLLIBRA_URL or not COLLIBRA_TOKEN:
+        print("Skipping Collibra — credentials not configured")
+        return
 
     url = f"{COLLIBRA_URL}/assets"
 

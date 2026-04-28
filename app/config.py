@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
 COLLIBRA_URL = os.getenv("COLLIBRA_URL")
 COLLIBRA_TOKEN = os.getenv("COLLIBRA_TOKEN")

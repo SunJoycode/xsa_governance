@@ -1,0 +1,18 @@
+CREATE PROCEDURE MONTHLY_REVENUE()
+LANGUAGE SQLSCRIPT AS
+BEGIN
+
+    SELECT
+        YEAR(b.booking_date)  AS year,
+        MONTH(b.booking_date) AS month,
+        h.region,
+        SUM(b.amount)         AS total_revenue,
+        COUNT(b.booking_id)   AS booking_count
+
+    FROM BOOKINGS b
+    JOIN HOTELS h ON b.hotel_id = h.hotel_id
+
+    GROUP BY YEAR(b.booking_date), MONTH(b.booking_date), h.region
+    ORDER BY year, month, region;
+
+END;

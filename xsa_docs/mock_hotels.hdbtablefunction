@@ -1,0 +1,14 @@
+CREATE FUNCTION MOCK_HOTELS()
+RETURNS TABLE (
+    hotel_id        INTEGER,
+    hotel_name      NVARCHAR(100),
+    region          NVARCHAR(50),
+    commission_rate DECIMAL(5,2)
+)
+LANGUAGE SQLSCRIPT AS
+BEGIN
+    RETURN
+        SELECT 101 AS hotel_id, 'Grand Hotel'   AS hotel_name, 'North' AS region, 0.10 AS commission_rate FROM DUMMY
+        UNION ALL SELECT 102, 'City Inn',       'South', 0.08 FROM DUMMY
+        UNION ALL SELECT 103, 'Luxury Resort',  'East',  0.12 FROM DUMMY;
+END;

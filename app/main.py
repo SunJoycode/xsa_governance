@@ -8,7 +8,7 @@ from publishers.ellie_publisher import publish_ellie
 
 def main():
 
-    objects = load_xsa("sample_xsa")
+    objects = load_xsa("xsa_docs")
 
     for obj in objects:
 

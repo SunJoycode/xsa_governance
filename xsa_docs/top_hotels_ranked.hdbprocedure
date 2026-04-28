@@ -1,0 +1,16 @@
+CREATE PROCEDURE TOP_HOTELS_RANKED()
+LANGUAGE SQLSCRIPT AS
+BEGIN
+
+    SELECT
+        h.hotel_name,
+        h.region,
+        SUM(b.amount)                                                        AS total_revenue,
+        RANK() OVER (PARTITION BY h.region ORDER BY SUM(b.amount) DESC)      AS regional_rank
+
+    FROM BOOKINGS b
+    JOIN HOTELS h ON b.hotel_id = h.hotel_id
+
+    GROUP BY h.hotel_id, h.hotel_name, h.region;
+
+END;

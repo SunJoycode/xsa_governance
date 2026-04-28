@@ -3,8 +3,9 @@ from app.config import ELLIE_URL, ELLIE_TOKEN
 
 def publish_ellie(model):
 
-    if not ELLIE_URL:
-        return "Ellie URL not configured"
+    if not ELLIE_URL or not ELLIE_TOKEN:
+        print("Skipping Ellie — credentials not configured")
+        return
 
     url = f"{ELLIE_URL}/models"
 

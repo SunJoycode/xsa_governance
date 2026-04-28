@@ -1,8 +1,9 @@
-import anthropic
-from app.config import ANTHROPIC_API_KEY
+from openai import OpenAI
+from app.config import GITHUB_TOKEN
 
-client = anthropic.Anthropic(
-    api_key=ANTHROPIC_API_KEY
+client = OpenAI(
+    api_key=GITHUB_TOKEN,
+    base_url="https://models.inference.ai.azure.com"
 )
 
 def explain_logic(sql_code):
@@ -22,8 +23,8 @@ SQL:
 {sql_code}
 """
 
-    response = client.messages.create(
-        model="claude-3-sonnet-20240229",
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
         max_tokens=1500,
         temperature=0.2,
         messages=[
@@ -31,4 +32,4 @@ SQL:
         ]
     )
 
-    return response.content[0].text
+    return response.choices[0].message.content
