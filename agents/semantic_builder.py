@@ -1,4 +1,3 @@
-import json
 import os
 
 def build_semantic(name, explanation):
@@ -8,13 +7,14 @@ def build_semantic(name, explanation):
         "description": explanation
     }
 
-    file = name.replace(".hdbprocedure", ".json")
+    file = name.replace(".hdbprocedure", ".txt").replace(".hdbtablefunction", ".txt")
 
     path = os.path.join("outputs/semantic", file)
 
     os.makedirs("outputs/semantic", exist_ok=True)
 
     with open(path, "w") as f:
-        json.dump(semantic, f, indent=2)
+        f.write(f"Name: {name}\n\n")
+        f.write(explanation)
 
     return semantic
